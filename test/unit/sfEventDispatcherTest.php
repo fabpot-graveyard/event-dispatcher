@@ -8,11 +8,11 @@
  * file that was distributed with this source code.
  */
 
-require_once dirname(__FILE__).'/lime/lime.php';
-require_once dirname(__FILE__).'/../lib/sfEvent.php';
-require_once dirname(__FILE__).'/../lib/sfEventDispatcher.php';
+require_once dirname(__FILE__).'/../lime/lime.php';
+require_once dirname(__FILE__).'/../../lib/sfEvent.php';
+require_once dirname(__FILE__).'/../../lib/sfEventDispatcher.php';
 
-$t = new lime_test(18);
+$t = new lime_test(19);
 
 $dispatcher = new sfEventDispatcher();
 
@@ -28,6 +28,7 @@ $dispatcher->disconnect('bar', 'listenToBarBar');
 $t->is($dispatcher->getListeners('bar'), array('listenToBar'), '->disconnect() disconnects a listener for an event name');
 $t->is($dispatcher->getListeners('barbar'), array('listenToBarBar'), '->disconnect() disconnects a listener for an event name');
 
+$t->ok($dispatcher->disconnect('foobar', 'listen') === false, '->disconnect() returns false if the listener does not exist');
 
 // ->getListeners() ->hasListeners()
 $t->diag('->getListeners() ->hasListeners()');

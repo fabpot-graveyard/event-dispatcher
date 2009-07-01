@@ -8,8 +8,8 @@
  * file that was distributed with this source code.
  */
 
-require_once dirname(__FILE__).'/lime/lime.php';
-require_once dirname(__FILE__).'/../lib/sfEvent.php';
+require_once dirname(__FILE__).'/../lime/lime.php';
+require_once dirname(__FILE__).'/../../lib/sfEvent.php';
 
 $t = new lime_test(11);
 
