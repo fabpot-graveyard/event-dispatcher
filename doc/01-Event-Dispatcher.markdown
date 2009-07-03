@@ -1,17 +1,21 @@
 Events and the Event Dispatcher
 ===============================
 
-Objected Oriented code can come a long way in ensuring extensibility
-of your projects. By creating classes that have well defined
-responsibilities, you make your code more flexible.
+Objected Oriented code has gone a long way to ensuring code written
+for your projects is extensible. By creating classes that have well
+defined responsibilities, your code becomes more flexible.
 
-If a user of your class want to modify its behavior, he can extend
-the class. But if the user want to share its changes with other
-users that also have their own changes, inheritance is moot. That's
-the case for instance when you want to provide a plugin system for
+If a user wants to modify a class's behavior, he can extend it using
+a subclass to override the behaviour. But if the user want to share
+his changes with other users who have made their own subclasses to
+change the behaviour, code inheritance is moot.
+
+A real-world example is when you want to provide a plugin system for
 your class. A plugin should be able to add methods, or do something
 before or after a method is executed, without interfering with other
-plugins work. That's tougher to resolve.
+plugins. This is not an easy problem to solve with single
+inheritance, and multiple inheritance (were it possible with PHP)
+has its own drawbacks.
 
 Enter Symfony Event Dispatcher. The library implements the
 [Observer](http://en.wikipedia.org/wiki/Observer_pattern) pattern in
@@ -54,12 +58,12 @@ Here are examples of good event names:
     response.filter_content
 
 As you might have noticed, event names contain a verb to indicate
-that it relates to something that happens.
+that they relate to something that happens.
 
 The Dispatcher
 --------------
 
-The dispatcher is the object responsible for connecting the
+The dispatcher is the object responsible for maintaining a register of
 listeners and calling them whenever an event is notified.
 
 By default, the dispatcher class is `sfEventDispatcher`:
@@ -73,8 +77,8 @@ Event Objects
 The event object, of class `sfEvent`, stores information about the
 notified event. Its constructor takes three arguments:
 
-  * The *subject* of the event (most of the time, this is the object notifying
-    the event, but it can also be `null`);
+  * The *subject* of the event (most of the time, this is the object
+    notifying the event, but it can also be `null`);
 
   * The event name;
 
@@ -104,8 +108,8 @@ parameters:
 Connecting Listeners
 --------------------
 
-Obviously, you need to connect some listeners to the dispatcher to
-make it useful. A call to the dispatcher `connect()` method
+Obviously, you need to connect some listeners to the dispatcher before
+it can be useful. A call to the dispatcher `connect()` method
 associates a PHP callable to an event.
 
 The `connect()` method takes two arguments:
@@ -124,7 +128,7 @@ The `connect()` method takes two arguments:
     [php]
     $dispatcher->connect('user.change_culture', $callable);
 
-Once a listener is registered in the event dispatcher, it waits
+Once a listener is registered with the event dispatcher, it waits
 until the event is notified. The event dispatcher keeps a record of
 all event listeners, and knows which ones to call when an event is
 notified.
@@ -278,7 +282,7 @@ Then, create a class that will host the listener:
         // we only want to respond to the calls to the 'bar' method
         if ('bar' != $event['method'])
         {
-          // let the opportnuity to another listener to take care of this unknown method
+          // let the opportunity to another listener to take care of this unknown method
           return false;
         }
 
@@ -306,9 +310,9 @@ Eventually, add the new `bar` method to the `Foo` class:
 
 ### Modifying Arguments
 
-If you want to allow third party classes to modify the arguments
-passed to a method, just before it is executed, add a `filter` event
-at the beginning of the method:
+If you want to allow third party classes to modify arguments passed
+to a method just before that method is executed, add a `filter`
+event at the beginning of the method:
 
     [php]
     class Foo
