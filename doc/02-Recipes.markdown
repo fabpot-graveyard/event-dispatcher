@@ -8,7 +8,7 @@ Passing along the Event Dispatcher Object
 
 If you have a look at the `sfEventDispatcher` class, you will notice
 that the class does not act as a Singleton (there is no
-`getInstance()` static method). That's on purpose as you might want
+`getInstance()` static method). That is intentional, as you might want
 to have several concurrent event dispatchers in a single PHP
 request. But it also means that you need a way to pass the
 dispatcher to the objects that need to connect or notify events.
@@ -51,7 +51,7 @@ especially for optional dependencies.
 >**TIP**
 >If you use dependency injection like we did in the two examples above,
 >you can then easily use the Symfony Dependency Injection container to
->elegantly manages these objects.
+>elegantly manage these objects.
 
 Doing something before or after a Method Call
 ---------------------------------------------
@@ -100,7 +100,7 @@ extended like this:
         // and pass the method name and the arguments passed to this method
         $event = new sfEvent($this, 'foo.method_is_not_found', array('method' => $method, 'arguments' => $arguments));
 
-        // calls all listeners until one is able implements the $method
+        // calls all listeners until one is able to implement the $method
         $this->dispatcher->notifyUntil($event);
 
         // no listener was able to proces the event? The method does not exist
@@ -124,7 +124,7 @@ Then, create a class that will host the listener:
         // we only want to respond to the calls to the 'bar' method
         if ('bar' != $event['method'])
         {
-          // let the opportunity to another listener to take care of this unknown method
+          // allow another listener to take care of this unknown method
           return false;
         }
 

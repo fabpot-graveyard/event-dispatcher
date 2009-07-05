@@ -24,7 +24,7 @@ lightweight implementation of the Observer design pattern.
 It's a good way to make your code more flexible. It's also a great
 way to make your code easily extensible by others. Third-party code
 listens to specific events by registering PHP callbacks and the
-dispatcher called them whenever your code notifies these events.
+dispatcher calls them whenever your code notifies these events.
 
 ### Fast
 
@@ -69,8 +69,9 @@ Installation
 Symfony Event Dispatcher can be installed by downloading the source
 code as a
 [tar](http://github.com/fabpot/event-dispatcher/tarball/master)
-archive or a
-[zip](http://github.com/fabpot/event-dispatcher/zipball/master) one.
+or
+[zip](http://github.com/fabpot/event-dispatcher/zipball/master)
+archive.
 
 To stay up-to-date, you can also use the official Subversion
 [repository](http://svn.symfony-project.com/components/event_dispatcher/).

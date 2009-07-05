@@ -6,7 +6,7 @@ for your projects is extensible. By creating classes that have well
 defined responsibilities, your code becomes more flexible.
 
 If a user wants to modify a class's behavior, he can extend it using
-a subclass to override the behaviour. But if the user want to share
+a subclass to override the behaviour. But if the user wants to share
 his changes with other users who have made their own subclasses to
 change the behaviour, code inheritance is moot.
 
@@ -21,7 +21,7 @@ Enter Symfony Event Dispatcher. The library implements the
 [Observer](http://en.wikipedia.org/wiki/Observer_pattern) pattern in
 a simple and effective way to make all these things possible and
 make your projects truly extensible (see the recipes section below
-for some possible implementation of these patterns).
+for some possible implementations of these patterns).
 
 The main goal of Symfony Event Dispatcher is to allow objects to
 communicate together without knowing each other. It is possible
@@ -141,7 +141,7 @@ For the example above, `$callable` will be called by the dispatcher
 whenever the `user.change_culture` event is notified by an object.
 
 When calling the listeners, the dispatcher passes them an `sfEvent`
-object as parameter. So, the listener receives the event object as
+object as a parameter. So, the listener receives the event object as
 its first argument.
 
 Notifying Events
