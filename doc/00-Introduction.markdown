@@ -80,6 +80,9 @@ If you are a Git user, there is an official
 [mirror](http://github.com/fabpot/event-dispatcher), which is
 updated every 10 minutes.
 
+If you prefer to install the component globally on your machine, you can use
+the symfony [PEAR](http://pear.symfony-project.com/) channel server.
+
 Support
 -------
 
